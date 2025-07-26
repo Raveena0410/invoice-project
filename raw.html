@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        <div class="container mt-5
+        ">
+       <div class="row">
+        <div class="col-lg-6 ">
+        <form action="" onsubmit="f1(event)" >
+            <h3>Enter Invoice Details</h3>
+            <label for="">Party Name</label>
+            <input type="text" class="form-control" id="party" >
+            <label for="">Mobile NO.</label>
+            <input type="number" class="form-control" id="mobile">
+            <label for="">Bill NO.</label>
+            <input type="text" class="form-control" id="bill">
+            <label for="">Bill Date</label>
+            <input type="date" class="form-control" id="date">
+            <label for="">Item Name</label>
+            <input type="text" class="form-control" id="item">
+            <label for="">HSN CODE</label>
+            <input type="text" class="form-control" id="hsn">
+            <label for="">QTY</label>
+            <input type="text" class="form-control" id="qty">
+            <label for="">Unit</label>
+            <input type="text" class="form-control" id="unit">
+            <label for="">Price</label>
+            <input type="text" class="form-control" id="price" oninput="f1()">
+            <label for="">Amount</label>
+            <input type="text" class="form-control" id="amount">
+            <label for="">Total</label>
+            <input type="text" class="form-control" id="total">
+            <input type="submit" class="btn btn-primary mt-4" >
+    
+
+
+
+
+
+
+
+
+        </form>
+       </div>
+       <div class="col-lg-6">
+       <table class="table border" >
+        <tr>
+            <th class="text-center" colspan="2">INVOICE</th>
+        </tr>
+        <tr>
+            <td>Party Name: <span id="t-party" ></span></td>
+            <td>Mobile NO.: <span id="t-mobile"></span></td>
+        </tr>
+        <tr>
+            <td>Bill NO.: <span id="t-bill"></span></td>
+            <td>Bill Date: <span id="t-date"></span></td>
+        </tr>
+        <tr>
+            <td>Item Name: <span id="t-item"></span></td>
+            <td>HSN CODE: <span id="t-hsn"></span></td>
+        </tr>
+        <tr>
+            <td>OTY: <span id="t-qty"></span></td>
+            <td>Unit <span id="t-unit"></span></td>
+
+        </tr>
+        <tr>
+            <td>Price: <span id="t-price"></span></td>
+            <td>Amount <span id="t-amount"></span></td>
+        </tr>
+        <tr>
+            <td colspan="2">Total: <span id="t-total"></span></td>
+        </tr>
+
+       </table>
+       <button class="btn btn-success mt-3" onclick="printTable()">Print Invoice</button>
+
+       </div>
+       </div>
+       </div>
+       <script>
+               function f1(event){
+                let qty=document.getElementById("qty").value;
+                let price=document.getElementById("price").value;
+
+               let amount= document.getElementById("amount").value=qty*price; 
+              let total= document.getElementById("total").value=amount;
+               let party=document.getElementById("party").value;
+               let mobile=document.getElementById("mobile").value;
+               let bill=document.getElementById("bill").value;
+               let date=document.getElementById("date").value;
+               let item=document.getElementById("item").value;
+               let hsn=document.getElementById("hsn").value;
+               let unit=document.getElementById("unit").value;
+                event.preventDefault();
+
+               document.getElementById("t-party").innerText=party;
+               document.getElementById("t-mobile").innerText=mobile;
+               document.getElementById("t-bill").innerText=bill;
+               document.getElementById("t-date").innerText=date;
+               document.getElementById("t-item").innerText=item;
+               document.getElementById("t-hsn").innerText=hsn;
+               document.getElementById("t-unit").innerText=unit;
+               document.getElementById("t-qty").innerText=qty;
+               document.getElementById("t-price").innerText=price;
+               document.getElementById("t-amount").innerText=amount;
+               document.getElementById("t-total").innerText=total;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+       }
+       function printTable() {
+    // Get the table HTML
+    var tableContent = document.querySelector(".table").outerHTML;
+
+    // Open a new window
+    var printWindow = window.open('', '', 'height=600,width=800');
+    
+    printWindow.document.write('<html><head><title>Invoice</title>');
+    printWindow.document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">');
+    printWindow.document.write('</head><body >');
+    printWindow.document.write('<h2 class="text-center">Invoice</h2>');
+    printWindow.document.write(tableContent);
+    printWindow.document.write('</body></html>');
+
+    printWindow.document.close(); // Finish writing
+    printWindow.print(); // Trigger print
+}
+
+
+
+
+       </script>
+
+       
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
